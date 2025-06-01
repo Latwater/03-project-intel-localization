@@ -1,0 +1,145 @@
+/* Add your CSS here */
+
+/* Set up basic page styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8fb; /* Light Intel-inspired background */
+  color: #222;
+}
+
+/* --- Hero Section Styles --- */
+header {
+  background: linear-gradient(120deg, #0068b5 60%, #00b8fc 100%);
+  color: #fff;
+  padding: 40px 0 30px 0;
+  text-align: center;
+}
+
+header img {
+  width: 120px; /* Intel logo size */
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 2.2em;
+  margin: 10px 0 10px 0;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 1.1em;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* --- Timeline Section Styles --- */
+section {
+  /* Use flexbox for horizontal scrolling on large screens */
+  display: flex;
+  overflow-x: auto;
+  gap: 24px; /* Space between cards */
+  padding: 32px 16px;
+  scroll-snap-type: x mandatory; /* Enables scroll snap */
+}
+
+/* Each milestone card */
+section > div {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  min-width: 260px;
+  max-width: 280px;
+  flex: 0 0 260px; /* Fixed width for horizontal scroll */
+  padding: 20px 16px 16px 16px;
+  scroll-snap-align: start; /* Snap to start of card */
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  cursor: pointer;
+  /* For hover effect */
+  z-index: 1;
+}
+
+/* Card headings */
+section h2 {
+  color: #0068b5;
+  font-size: 1.3em;
+  margin: 0 0 4px 0;
+}
+
+section h3 {
+  font-size: 1.1em;
+  margin: 0 0 10px 0;
+  color: #222;
+}
+
+/* Card images */
+section img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Card text */
+section p {
+  font-size: 0.98em;
+  color: #444;
+  margin: 0;
+  transition: max-height 0.3s, opacity 0.3s;
+  max-height: 60px;
+  overflow: hidden;
+}
+
+/* --- Card Hover Effects --- */
+section > div:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(0,104,181,0.18);
+  z-index: 2;
+}
+
+/* Reveal more text on hover */
+section > div:hover p {
+  max-height: 300px; /* Show full text */
+  opacity: 1;
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 900px) {
+  section {
+    gap: 16px;
+    padding: 24px 8px;
+  }
+  section > div {
+    min-width: 220px;
+    max-width: 240px;
+    padding: 16px 10px 12px 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Stack cards vertically on small screens */
+  section {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 20px;
+    scroll-snap-type: none;
+    align-items: center;
+  }
+  section > div {
+    width: 95%;
+    min-width: 0;
+    max-width: 400px;
+    margin: 0 auto;
+    scroll-snap-align: none;
+  }
+}
+
+/* --- Timeline Instruction Text --- */
+body > p {
+  text-align: center;
+  color: #0068b5;
+  font-size: 1em;
+  margin: 18px 0 30px 0;
+  letter-spacing: 0.5px;
+}
