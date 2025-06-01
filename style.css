@@ -10,10 +10,21 @@ body {
 
 /* --- Hero Section Styles --- */
 header {
-  background: linear-gradient(120deg, #0068b5 60%, #00b8fc 100%);
+  background: linear-gradient(120deg, #005a99 60%, #0099cc 100%);
   color: #fff;
   padding: 40px 0 30px 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center header content horizontally */
+  justify-content: center;
+}
+
+/* Center the header inner div */
+header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header img {
@@ -35,13 +46,17 @@ header p {
 }
 
 /* --- Timeline Section Styles --- */
-section {
-  /* Use flexbox for horizontal scrolling on large screens */
+section.timeline {
   display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center timeline cards horizontally */
+  align-items: flex-start; /* Align cards to the top */
   overflow-x: auto;
-  gap: 24px; /* Space between cards */
+  gap: 24px;
   padding: 32px 16px;
-  scroll-snap-type: x mandatory; /* Enables scroll snap */
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Each milestone card */
@@ -63,7 +78,7 @@ section > div {
 
 /* Card headings */
 section h2 {
-  color: #0068b5;
+  color: #005a99;
   font-size: 1.3em;
   margin: 0 0 4px 0;
 }
@@ -135,11 +150,199 @@ section > div:hover p {
   }
 }
 
-/* --- Timeline Instruction Text --- */
+/* Center timeline instruction text */
 body > p {
   text-align: center;
   color: #0068b5;
   font-size: 1em;
   margin: 18px 0 30px 0;
   letter-spacing: 0.5px;
+}
+
+/* Style for "Learn More" links in three-column section */
+.btn-outline-primary, .btn-outline-success, .btn-outline-info {
+  font-weight: bold;
+  border-width: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-primary:hover, .btn-outline-success:hover, .btn-outline-info:hover {
+  color: #fff;
+}
+
+/* Subscription form accessibility */
+form input[type="email"] {
+  font-size: 1em;
+  direction: ltr; /* Email fields should be LTR even in RTL pages */
+}
+
+/* Add focus style for accessibility */
+form input:focus, .btn:focus {
+  outline: 2px solid #005a99;
+  outline-offset: 2px;
+}
+
+/* Footer styles for contrast and spacing */
+footer {
+  background: #222 !important;
+  color: #fff !important;
+}
+footer .nav-link {
+  color: #bbb !important;
+}
+footer .nav-link:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+/* Center three-column section and subscription form */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all container content */
+  justify-content: center;
+}
+
+/* Center row content in three-column section */
+.container .row {
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0; /* Remove extra gap to keep columns aligned */
+}
+
+/* Center cards in three-column section */
+.container .col-md-4,
+.container .col-md-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Make sure cards are not layered */
+.card {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto 16px auto;
+  z-index: 1;
+  position: relative;
+}
+
+/* Ensure timeline cards are not layered */
+.timeline-card {
+  z-index: 1;
+  position: relative;
+}
+
+/* Style for the icon above the heading in the three-column section */
+.card .bi {
+  display: block;
+  margin: 0 auto 16px auto; /* Center icon and add space below */
+  font-size: 2.5em;
+}
+
+/* Add space below the icon and above the heading */
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Add space below the heading and above the paragraph */
+.card p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Center the button and add space above */
+.card .btn {
+  display: block;
+  margin: 20px auto 0 auto; /* Space above button, center horizontally */
+  align-self: center;
+}
+
+/* Add extra space above the button in the third column to align with others,
+   and keep it aligned even when columns expand */
+.container .col-md-4:last-child .btn {
+  margin-top: 48px;
+}
+
+/* When columns expand (on wider screens), keep the third button aligned */
+@media (min-width: 992px) {
+  .container .col-md-4:last-child .btn {
+    margin-top: 64px; /* Increase if needed for better alignment on large screens */
+  }
+}
+
+/* Make sure card content is spaced vertically and centered */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 12px 20px 12px;
+}
+
+/* Responsive: Stack timeline cards vertically on small screens and center them */
+@media (max-width: 700px) {
+  section.timeline {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+    gap: 20px;
+    scroll-snap-type: none;
+  }
+  section.timeline > div {
+    width: 95%;
+    min-width: 0;
+    max-width: 400px;
+    margin: 0 auto;
+    scroll-snap-align: none;
+  }
+}
+
+/* Responsive: Center subscription form on small screens */
+@media (max-width: 900px) {
+  .container .row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Center footer content */
+footer .container {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+footer .nav {
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* RTL support for custom styles */
+body.rtl header, body.rtl section, body.rtl footer {
+  text-align: right;
+}
+body.rtl .timeline {
+  direction: rtl;
+}
+body.rtl .timeline-card {
+  text-align: right;
+}
+body.rtl .form-label, body.rtl input, body.rtl .form-text {
+  text-align: right;
+}
+
+/* Move the email icon in the newsletter form slightly to the right for alignment */
+form .bi-envelope-fill {
+  float: none;
+  margin-right: 8px;
+  margin-left: 4px;
+  vertical-align: middle;
 }
